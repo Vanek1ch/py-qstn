@@ -1,5 +1,6 @@
 import tkinter as tk
 import bd_func as bd
+import registration_window as rw
 
 # Создание окна регистрации/логина
 
@@ -51,8 +52,8 @@ def main():
     # Функция кнопки регистрации
 
     def registration():
-
-        pass
+        root.destroy()
+        rw.main()
 
     # Кнопки
     login_button = tk.Button(text="Войти", command=login)
