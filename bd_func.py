@@ -15,15 +15,16 @@ def main():
                 user_id INTEGER PRIMARY KEY,
                 login TEXT NOT NULL,
                 password TEXT NOT NULL,
+                patronymic TEXT NOT NULL,
                 name TEXT NOT NULL,
                 surname TEXT NOT NULL,
                 edu_inst TEXT NOT NULL,
                 email TEXT NOT NULL,
-                is_admin INTEGER NOT NULL,
-                birth_date DATE NOT NULL,
-                age INTEGER NOT NULL
+                is_admin INTEGER,
+                birth_date DATE NOT NULL
                 )
-                """)
+                """
+                )
     # Подтверждаем изменения
     conn.commit()
     conn.close()
@@ -67,16 +68,15 @@ def add_user(*args):
     cur = conn.cursor()
 
     # Делаем запрос на внесение данных
-    cur.execute
-    (
+    cur.execute(
         """
         INSERT INTO Users 
         (
-        login, password, name, surname, edu_inst, email, 
-        is_admin, birth_date, age
+        login, password, name, surname, patronymic, edu_inst, email,
+        birth_date
         ) 
-        VALUES (?,?,?,?,?,?,?,?,?)
-        """, (args)
+        VALUES (?,?,?,?,?,?,?,?)
+        """, args
     )
     conn.commit()
     conn.close()

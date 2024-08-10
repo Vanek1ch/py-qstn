@@ -25,8 +25,8 @@ def main():
         edu_inst = edu_inst_entry.get()
 
         # Обращение к БД для добавления пользователя
-        bd.add_user(login, password, email, name, surname,
-                    patronymic, birth_date, edu_inst)
+        bd.add_user(login, password, name, surname, patronymic, edu_inst, email,
+                    birth_date)
     # Поля ввода
     login_entry = tk.Entry()
     login_entry.place(x=60, y=10)
