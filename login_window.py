@@ -1,6 +1,7 @@
 import tkinter as tk
 import bd_func as bd
 import registration_window as rw
+import main_window as mw
 
 # Создание окна регистрации/логина
 
@@ -47,7 +48,8 @@ def main():
         if user is None:
             err_msg("UPI")
         else:
-            pass
+            root.destroy()
+            mw.main(user_id=user)
 
     # Функция кнопки регистрации
 

@@ -43,7 +43,7 @@ def check_user(login, password):
     # Делаем запрос на извлечение данных
     cur.execute(
         """
-        SELECT * FROM Users
+        SELECT user_id FROM Users
         WHERE login = ?
         AND password = ?
         """, (login, password))

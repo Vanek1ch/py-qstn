@@ -1,5 +1,6 @@
 import tkinter as tk
 import bd_func as bd
+import login_window as lw
 
 
 def main():
@@ -10,6 +11,11 @@ def main():
     root.title("Py-qstn")
     root.geometry("470x300+700+300")
     root.resizable(False, False)
+
+    # Функция кнопки возврата
+    def return_to_login():
+        root.destroy()
+        lw.main()
 
     # Функция регистрации
     def registration():
@@ -80,7 +86,10 @@ def main():
     # Кнопки
     registration_button = tk.Button(
         text="Зарегистрироваться", command=registration)
-    registration_button.place(x=180, y=200)
+    registration_button.place(x=150, y=200)
+
+    return_to_login_button = tk.Button(text="Обратно", command=return_to_login)
+    return_to_login_button.place(x=300, y=200)
 
     root.mainloop()
 
