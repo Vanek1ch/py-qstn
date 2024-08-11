@@ -43,13 +43,13 @@ def main():
         password = password_entry.get()
 
         # Обращение к БД
-        user = bd.check_user(login, password)
+        name, surname = bd.check_user(login, password)
 
-        if user is None:
+        if name is None:
             err_msg("UPI")
         else:
             root.destroy()
-            mw.main(user_id=user)
+            mw.main(name, surname)
 
     # Функция кнопки регистрации
 
@@ -62,7 +62,7 @@ def main():
     login_button.place(x=150, y=200)
 
     registration_button = tk.Button(text="Регистрация", command=registration)
-    registration_button.place(x=250, y=200)
+    registration_button.place(x=250, y=390)
 
     root.mainloop()
 

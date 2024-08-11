@@ -29,6 +29,52 @@ def main():
     conn.commit()
     conn.close()
 
+# Работа с бд опросников, вопросов, ответов
+
+
+def SQC_db():
+
+    conn = sqlite3.connect("py-qstn/qstn_datsabase.db")
+    cur = conn.cursor()
+
+    # Таблица для вопросников
+    cur.execute("""
+                CREATE TABLE IF NOT EXISTS surveys
+                (
+                    survey_id INTEGER PRIMARY KEY,
+                    survey_name TEXT NOT NULL,
+                    survey_author TEXT NOT NULL,
+                    survey_description TEXT NOT NULL,
+                    survey_time TEXT NOT NULL
+                )
+                """)
+
+    # Таблица для вопросов
+    cur.execute("""
+                CREATE TABLE IF NOT EXISTS questions
+                (
+                    question_id INTEGER PRIMARY KEY,
+                    survey_id INTEGER,
+                    question_text TEXT NOT NULL,
+                    question_type TEXT NOT NULL,
+                    FOREIGN KEY (survey_id) REFERENCES surveys(survey_id)
+                )
+                """)
+
+    # Таблица для вариантов ответа
+    cur.execute("""
+                CREATE TABLE IF NOT EXISTS choices 
+                (
+                 choice_id INTEGER PRIMARY KEY,
+                 question_id INTEGER,
+                 choice_text TEXT NOT NULL,
+                 FOREIGN KEY (question_id) REFERENCES questions(questions_id)   
+                )
+                """)
+
+    conn.commit()
+    conn.close()
+
 # Функция проверки пользователя на сущетсвование в базе данных
 
 
@@ -43,7 +89,7 @@ def check_user(login, password):
     # Делаем запрос на извлечение данных
     cur.execute(
         """
-        SELECT user_id FROM Users
+        SELECT name, surname FROM Users
         WHERE login = ?
         AND password = ?
         """, (login, password))
