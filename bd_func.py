@@ -34,7 +34,7 @@ def main():
 
 def SQC_db():
 
-    conn = sqlite3.connect("py-qstn/qstn_datsabase.db")
+    conn = sqlite3.connect("py-qstn/qstn_database.db")
     cur = conn.cursor()
 
     # Таблица для вопросников
@@ -62,6 +62,7 @@ def SQC_db():
                 """)
 
     # Таблица для вариантов ответа
+    ''' реализовать
     cur.execute("""
                 CREATE TABLE IF NOT EXISTS choices 
                 (
@@ -71,6 +72,7 @@ def SQC_db():
                  FOREIGN KEY (question_id) REFERENCES questions(questions_id)   
                 )
                 """)
+    '''
 
     conn.commit()
     conn.close()
@@ -126,3 +128,26 @@ def add_user(*args):
     )
     conn.commit()
     conn.close()
+
+# Функция создающая список доступных для прохождения тестов
+
+
+def tuple_of_surveys():
+
+    SQC_db()
+
+    conn = sqlite3.connect("py-qstn/qstn_database.db")
+    cur = conn.cursor()
+
+    # Делаем запрос на получение данных
+    cur.execute(
+        """
+        SELECT survey_name from surveys
+        """
+    )
+
+    survey_tuple = cur.fetchall()
+
+    conn.close()
+
+    return survey_tuple
