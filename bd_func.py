@@ -91,7 +91,7 @@ def check_user(login, password):
     # Делаем запрос на извлечение данных
     cur.execute(
         """
-        SELECT name, surname FROM Users
+        SELECT name, surname, is_admin FROM Users
         WHERE login = ?
         AND password = ?
         """, (login, password))
