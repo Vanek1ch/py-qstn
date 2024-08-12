@@ -1,15 +1,17 @@
 import tkinter as tk
 import bd_func as bd
+import registration_window as rw
+import main_window as mw
 
 # Создание окна регистрации/логина
 
 
 def main():
     root = tk.Tk()
-
     # Вывод сообщения об ошибке
     # Типы:
     # UPI - Username or Password is Incorrect
+
     def err_msg(type):
         if type == "UPI":
             err_text = tk.Label(text="Неправильно введен Логин или Пароль")
@@ -46,13 +48,19 @@ def main():
         if user is None:
             err_msg("UPI")
         else:
-            pass
+            name, surname, is_admin = user
+            if is_admin != 1:
+                root.destroy()
+                mw.user(name, surname)
+            elif is_admin == 1:
+                root.destroy()
+                mw.admin(name, surname)
 
     # Функция кнопки регистрации
 
     def registration():
-
-        pass
+        root.destroy()
+        rw.main()
 
     # Кнопки
     login_button = tk.Button(text="Войти", command=login)
