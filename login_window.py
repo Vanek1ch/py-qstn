@@ -8,10 +8,10 @@ import main_window as mw
 
 def main():
     root = tk.Tk()
-
     # Вывод сообщения об ошибке
     # Типы:
     # UPI - Username or Password is Incorrect
+
     def err_msg(type):
         if type == "UPI":
             err_text = tk.Label(text="Неправильно введен Логин или Пароль")

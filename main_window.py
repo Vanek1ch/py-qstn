@@ -42,6 +42,10 @@ def admin(name, surname):
     def start_test():
         root.destroy()
 
+    def create_test():
+        root.destroy()
+        pass
+
     # Текст
     name_lic = tk.Label(text=f"ЛК:{name} {surname}")
     name_lic.place(x=470-(100+len(name+surname)), y=20)
@@ -49,7 +53,11 @@ def admin(name, surname):
     # Кнопки
     solve_test_button = tk.Button(
         text="Пройти тестирование", command=start_test)
-    solve_test_button.place(x=150, y=250)
+    solve_test_button.place(x=230, y=250)
+
+    create_test_button = tk.Button(
+        text="Создать тестирование", command=create_test)
+    create_test_button.place(x=20, y=250)
 
     # Combobox
     tuple = bd.tuple_of_surveys()
