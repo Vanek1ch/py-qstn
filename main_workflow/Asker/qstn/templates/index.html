@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static "css/index_style.css"%}">
+    <title>Questioner</title>
+  </head>
+  <body>
+    <header>
+      <div class="project_name">Questioner</div>
+    </header>
+    <div class="container_login">
+      <form method="post" action="{% url 'private_office' %}" class="login">
+        {% csrf_token %}
+        <p>Авторизация</p>
+        <div class="login_entry">
+          <p>
+            <label for="login" class="login_label">Логин: </label>
+            <input name="login" id="login" class="input_login" required />
+          </p>
+        </div>
+        <p>
+          <label for="password">Пароль:</label>
+          <input type="password" name="password" id="password" required />
+        </p>
+        <p><input type="submit" value="Войти" class="submit_login_button" /></p>
+      </form>
+      <form action="{% url 'registration' %}" method="post" class="register">
+        {% csrf_token %}
+        <input
+          type="submit"
+          class="submit_register_button"
+          value="Регистрация"
+        />
+      </form>
+    </div>
+  </body>
+</html>

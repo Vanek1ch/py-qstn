@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration</title>
+    <link rel="stylesheet" href="{% static "css/registration_style.css"%}">
+  </head>
+  <body>
+    <header>
+      <div class="project_name">Questioner</div>
+    </header>
+    <div class="form_container">
+      <form action="{% url 'add_user' %}" method="POST" class="registration_form">
+        {% csrf_token %}
+        <div class="login_container">
+          <label for="login" class="login_label">Логин:</label>
+          <input
+            id="login"
+            type="text"
+            name="login"
+            class="login_input"
+            placeholder="example_name"
+            maxlength="9"
+            required
+          />
+        </div>
+        <div class="password_container">
+          <label for="password" class="password_label">Пароль:</label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            class="password_input"
+            placeholder="example_password"
+            maxlength="32"
+            required
+          />
+        </div>
+        <div class="email_container">
+          <label for="email" class="email_label">Почта:</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            class="email_input"
+            placeholder="your_name@email.com"
+            required
+          />
+        </div>
+        <div class="number_container">
+          <label for="number" class="number_label">Номер телефона:</label>
+          <input
+            id="number"
+            name="number"
+            type="tel"
+            class="number_input"
+            placeholder="+7 (123) 456 78 90"
+            required
+          />
+        </div>
+        <div class="EI_container">
+          <label for="EI" class="EI_label">Учебное учрж.:</label>
+          <input
+            id="EI"
+            name="EI"
+            type="text"
+            class="number_input"
+            placeholder="name of Edu.Inst.:"
+            required
+          />
+        </div>
+        <div class="date_container">
+          <label for="date" class="date_label">Дата рождения:</label>
+          <input name="date" id="date" type="date" class="date_input" required />
+        </div>
+        <div class="register_container">
+          <input
+            type="submit"
+            class="submit_button"
+            value="Зарегистрироваться"
+          />
+        </div>
+      </form>
+      <form action="{% url 'index' %}" method="POST" class="back_form">
+        {% csrf_token %}
+        <div class="back_container">
+          <input type="submit" value="Обратно" class="back_button" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

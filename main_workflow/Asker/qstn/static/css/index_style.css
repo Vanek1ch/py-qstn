@@ -1,0 +1,45 @@
+body {
+    margin: 0;
+    background-image: url("../images/bg.jpg");
+    background-size: cover;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.project_name {
+    color: aliceblue;
+    font-size: 40px;
+    margin-top: 10%;
+}
+
+.login_entry {
+    margin-left: 11px;
+}
+
+.container_login {
+    background-color: aliceblue;
+    border: 2px solid;
+    margin-top: 5%;
+    margin-right: 40%;
+    margin-left: 40%;
+    margin-bottom:10;
+    min-width: 300px;
+    min-height: 230px;
+    border-radius: 20px;
+}
+
+.submit_login_button {
+    background-color: rgb(167, 228, 75);
+    min-width: 50%;
+    min-height: 30px;
+    border-radius: 20px;
+    border-color: beige;
+}
+
+.submit_register_button {
+    background-color: rgb(202, 96, 72);
+    min-width: 50%;
+    min-height: 30px;
+    border-radius: 20px;
+    border-color: beige;
+}
