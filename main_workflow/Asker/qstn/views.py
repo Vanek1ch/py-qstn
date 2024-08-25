@@ -1,31 +1,37 @@
 from django.shortcuts import render
-from django.views.decorators.csrf import csrf_protect
 from django.http import HttpResponseRedirect
-from .models import Person
+from django.contrib.auth import authenticate, login
+from .models import UserManager
+import hashlib as h
+import datetime as dt
 
 # from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
-@csrf_protect
-def index(request):
-    return render(request, "index.html")
+def login(request):
+    login = request.POST.get("login")
+    password = request.POST.get("password")
+    user = authenticate()
 
-@csrf_protect
+    return render(request, "login.html")
+
 def registration(request):
     return render(request, "registration.html")
 
-@csrf_protect
 def add_user(request):
-    if request.method == "POST":
-        person = Person()
-        person.login =  request.POST.get("login")
-        person.password = request.POST.get("password")
-        person.email = request.POST.get("email")
-        person.number = request.POST.get("number")
-        person.EI = request.POST.get("EI")
-        person.date = request.POST.get("date")
-        person.save()
-    return HttpResponseRedirect("/")
+    login = request.POST.get("login")
+    password = request.POST.get("password")
+    email = request.POST.get("email")
 
-@csrf_protect
-def private_office(request):
-    return render(request, "private_office.html")
+    password = (password.encode())
+    salt = (str(dt.datetime.now()).encode())
+    salt_hash = h.sha256(salt).hexdigest()
+    hashed_password = h.sha256(password+salt).hexdigest()
+    
+    
+    UserManager.create_user(login=login,password=hashed_password,email=email,salt=salt_hash)
+    
+    return render(request, "login.html")
+        
+
+def index(request):
+    return render(request, "index.html")

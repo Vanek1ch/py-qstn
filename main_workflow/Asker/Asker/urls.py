@@ -18,8 +18,8 @@ from qstn import views
 from django.urls import path
 
 urlpatterns = [
-    path('', views.index, name="index"),
+    path('', views.login, name="login"),
     path('registration/', views.registration, name="registration"),
     path('add_user/', views.add_user, name="add_user"),
-    path('private_office/', views.private_office, name="private_office")
+    path('index/', views.index, name="index")
 ]

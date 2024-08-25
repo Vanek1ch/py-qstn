@@ -1,40 +1,24 @@
-<!DOCTYPE html>
 {% load static %}
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static "css/index_style.css"%}">
-    <title>Questioner</title>
+    <title>Questioner - Личный кабинет</title>
+    <link rel="stylesheet" href="{% static "css/po_style.css"%}">
   </head>
   <body>
     <header>
       <div class="project_name">Questioner</div>
     </header>
-    <div class="container_login">
-      <form method="post" action="{% url 'private_office' %}" class="login">
-        {% csrf_token %}
-        <p>Авторизация</p>
-        <div class="login_entry">
-          <p>
-            <label for="login" class="login_label">Логин: </label>
-            <input name="login" id="login" class="input_login" required />
-          </p>
-        </div>
-        <p>
-          <label for="password">Пароль:</label>
-          <input type="password" name="password" id="password" required />
-        </p>
-        <p><input type="submit" value="Войти" class="submit_login_button" /></p>
-      </form>
-      <form action="{% url 'registration' %}" method="post" class="register">
-        {% csrf_token %}
-        <input
-          type="submit"
-          class="submit_register_button"
-          value="Регистрация"
-        />
-      </form>
+    <div class="po_container">
+      <div class="container_header">header</div>
+      <div class="container_body">
+        <div class="left_panel">left</div>
+        <div class="center_panel">center</div>
+        <div class="right_panel">right</div>
+      </div>
+      <div class="container_footer">footer</div>
     </div>
   </body>
 </html>
